@@ -19,11 +19,10 @@ namespace lab09
             InitializeComponent();
             var image = new Image
             {
-                Source = "tapped.jpg",
+                Source = "tapped.png",
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.EndAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
             };
-
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.NumberOfTapsRequired = 2;
             tapGestureRecognizer.Tapped += OnTapGestureRecognizerTapped;
@@ -40,7 +39,6 @@ namespace lab09
             Content = new StackLayout
             {
                 Padding = new Thickness(20, 100),
-
                 Children =
                 {
                     image,
@@ -49,21 +47,18 @@ namespace lab09
             };
         }
 
-        void OnTapGestureRecognizerTapped(Object sender, EventArgs args)
+        void OnTapGestureRecognizerTapped(object sender, EventArgs args)
         {
             tapCount++;
-            label.Text = String.Format("{0} tap{1} so far!",
-                tapCount,
-                tapCount == 1 ? "" : "s");
+            label.Text = String.Format("{0} tap{1} so far!", tapCount, tapCount == 1 ? "" : "s");
             var imageSender = (Image)sender;
-
-            if (tapCount % 2 == 0)
+            if(tapCount % 2 == 0)
             {
-                imageSender.Source = "tapped.jpg";
+                imageSender.Source = "tapped.png";
             }
             else
             {
-                imageSender.Source = "tapped_bw.jpg";
+                imageSender.Source = "tapped_bw.png";
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lab09;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,11 +7,13 @@ namespace lab09
 {
     public partial class App : Application
     {
+        public static float ScreenHeight { get; set; }
+        public static float ScreenWidth { get; set; }
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
